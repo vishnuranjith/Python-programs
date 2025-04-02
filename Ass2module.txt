@@ -1,0 +1,627 @@
+               Jan 2024
+Q. Explain type conversion with example.
+ Ans: Implicit Type Conversion:
+	This occurs automatically when the data types are compatible, and there is no loss of information.
+	eg: Python converts num_int (an integer) to a float automatically before performing the addition
+	 num_int = 10
+	 num_float = num_int + 2.5  
+	 print(num_float)  
+	 print(type(num_float))  
+	Output: 12.5
+	Output: <class 'float'>
+      Explicit Type Conversion:
+	This requires the programmer to use predefined functions like int(), float(), str(), etc., to convert data types.
+	eg: the programmer explicitly specifies the desired data type using conversion functions.
+	 num_float = 5.7
+ 	 num_int = int(num_float)  
+	 print(num_int)  
+	 print(type(num_int))  
+	Output: 5
+	Output: <class 'int'>
+
+Q. Write a program that accepts the lengths of three sides of a triangle as inputs and
+    outputs whether or not the triangle is a right triangle.
+Ans:def is_right_triangle(a, b, c):
+    	sides = sorted([a, b, c])
+        return sides[0]**2 + sides[1]**2 == sides[2]**2
+   
+    try:
+    	side1 = float(input("Enter the length of the first side: "))
+    	side2 = float(input("Enter the length of the second side: "))
+    	side3 = float(input("Enter the length of the third side: "))
+
+    	if is_right_triangle(side1, side2, side3):
+        	print("The triangle is a right triangle.")
+    	else:
+        	print("The triangle is NOT a right triangle.")
+    except ValueError:
+   	 print("Please enter valid numeric values for the sides.")
+
+    Output:
+	Enter the length of the first side: 3
+	Enter the length of the second side: 4
+	Enter the length of the third side: 5
+	The triangle is a right triangle.
+
+
+Q. Write a Python program to print all numbers between 100 and 1000 whose sum
+   of digits is divisible by 9.
+Ans: def sum_of_digits(num):
+     	return sum(int(digit) for digit in str(num))
+
+     print("Numbers between 100 and 1000 whose sum of digits is divisible by 9:")
+     for number in range(100, 1000):
+     	if sum_of_digits(number) % 9 == 0:
+        	print(number, end=" ")
+
+     Output:
+	Numbers between 100 and 1000 whose sum of digits is divisible by 9:
+	108 117 126 135 144 153 162 171 180 189 198 207 216 225 234 243 252 261 270 279 288 297 	306 315 324 333 342 351 360 369 378 387 396 405 414 423 432 441 450 459 468 477 486 495 	504 513 522 531 540 549 558 567 576 585 594 603 612 621 630 639 648 657 666 675 684 693 	702 711 720 729 738 747 756 765 774 783 792 801 810 819 828 837 846 855 864 873 882 891 	900 909 918 927 936 945 954 963 972 981 990 999
+
+
+Q. Illustrate the use of range() in Python.
+Ans: The range() function in Python generates a sequence of numbers. It is commonly used in loops      to iterate over a sequence of values.
+	Syntax:
+	  range(stop)
+	  range(start, stop)
+	  range(start, stop, step)
+	eg:  Generate numbers from 1 to 10 with a step of 2
+		for i in range(1, 11, 2):
+    			print(i, end=" ")  
+
+		 Output: 1 3 5 7 9
+
+Q. Write a Python program to print all prime factors of a given number.
+Ans: def prime_factors(n):
+     	print(f"Prime factors of {n} are:", end=" ")
+    
+    	while n % 2 == 0:
+        	print(2, end=" ")
+        	n //= 2
+
+   	factor = 3
+        while factor * factor <= n:
+        	while n % factor == 0:
+            		print(factor, end=" ")
+            		n //= factor
+        	factor += 2
+
+   	if n > 2:
+        	print(n, end=" ")
+    	print() 
+
+
+
+     try:
+     	number = int(input("Enter a positive integer: "))
+    	if number > 0:
+        	prime_factors(number)
+    	else:
+        	print("Please enter a positive integer.")
+     except ValueError:
+     	print("Invalid input. Please enter a valid positive integer.")
+
+	Output: Enter a positive integer: 56
+	        Prime factors of 56 are: 2 2 2 7
+
+        MAY 2024
+Q. Let the variable x be "dog" and the variable y be "cat". Write the values returned by the following operations: a) x*4 + ' ' + 4*y b) x*len(x+y)
+ ans)a)dogdogdogdog' + ' ' + 'catcatcatcat' results in 'dogdogdogdog catcatcatcat'
+         b)'dog' * 6 results in 'dogdogdogdogdogdog'
+
+Q. What will be the output if the following code fragments are executed? for j in range(2,10,4):
+print(j)
+ans)output
+ 2
+6
+
+Q. Write a python program to find out the eldest and youngest of three individuals , with their ages being input through the keyboard.(without using max, min functions
+Ans)
+age1 = int(input("Enter age of first person: "))
+age2 = int(input("Enter age of second person: "))
+age3 = int(input("Enter age of third person: "))
+
+if age1 >= age2 and age1 >= age3:
+    eldest = age1
+elif age2 >= age1 and age2 >= age3:
+    eldest = age2
+else:
+    eldest = age3
+
+if age1 <= age2 and age1 <= age3:
+    youngest = age1
+elif age2 <= age1 and age2 <= age3:
+    youngest = age2
+else:
+    youngest = age3
+
+print("The eldest person is:", eldest)
+print("The youngest person is:", youngest)
+Enter age of first person: 25
+Enter age of second person: 30
+Enter age of third person: 22
+The eldest person is: 30
+The youngest person is: 22
+
+Q. Consider the mathematical expression (a+b)2=a2+2ab+b2. Write a Python program that takes user input for values of a and b, then evaluates both sides of the expresfinally compares the result and print whether the equation holds true or false
+ ans)
+a = float(input("Enter the value of a: "))
+b = float(input("Enter the value of b: "))
+
+left_side = (a + b) ** 2
+right_side = a ** 2 + 2 * a * b + b ** 2
+
+if left_side == right_side:
+    print("The equation holds true.")
+else:
+    print("The equation does not hold true.")
+Enter the value of a: 3
+Enter the value of b: 4
+The equation holds true.
+
+Q. enumerate the various selection structures and control statements types in python and elucidate each with suitable examples
+ ans)if condition:
+    # block of code
+eg;x = 10
+if x > 5:
+    print("x is greater than 5")
+x is greater than 5
+if condition:
+    # block of code if condition is true
+else:
+    # block of code if condition is false
+eg:x = 3
+if x > 5:
+    print("x is greater than 5")
+else:
+    print("x is less than or equal to 5")
+x is less than or equal to 5
+ if condition1:
+    # block of code if condition1 is true
+elif condition2:
+    # block of code if condition2 is true
+else:
+    # block of code if neither condition1 nor condition2 is true
+eg:x = 10
+if x > 15:
+    print("x is greater than 15")
+elif x > 5:
+    print("x is greater than 5 but less than or equal to 15")
+else:
+    print("x is less than or equal to 5")
+output
+x is greater than 5 but less than or equal to 15
+
+ Q.  write a python programme to print a factorial of a given number
+ ans)
+def factorial(n):
+    result = 1
+    for i in range(1, n + 1):
+        result *= i
+    return result
+
+number = int(input("Enter a number: "))
+
+if number < 0:
+    print("Factorial is not defined for negative numbers")
+else:
+    print(f"The factorial of {number} is: {factorial(number)}")
+
+	Output: Enter a number: 3
+		The factorial of 3 is: 6
+
+	
+	JUNE 2023
+Q. Python program to calculate the sum of the cosine series
+import math
+def cosine_series_sum(x, n):
+    cos_sum = 1
+    term = 1
+    for i in range(1, n):
+        term *= -x**2 / ((2 * i - 1) * (2 * i))
+        cos_sum += term
+    return cos_sum
+angle_degrees = float(input("Enter the angle in degrees: "))
+n_terms = int(input("Enter the number of terms: "))
+angle_radians = math.radians(angle_degrees)
+result = cosine_series_sum(angle_radians, n_terms)
+print(f"The sum of the cosine series up to {n_terms} terms is: {result}")
+
+	Output: Enter the angle in degrees: 45
+		Enter the number of terms: 5
+		The sum of the cosine series up to 5 terms is: 0.7071032148228457
+
+
+Q. write a python program to find X^Y or pow(X,Y) without using standard function
+def power(x, y):
+    Result = 1
+    Is_negative_exponent = FFals
+    If y < 0:
+        Is_negative_exponent = True
+        Y = -y
+    For _ in range(y):
+        Result *= x
+    If is_negative_exponent:
+        Result = 1 / result
+    Return result
+Base = float(input(“Enter the base (X): “))
+Exponent = int(input(“Enter the exponent (Y): “))
+Result = power(base, exponent)
+Print(f”{base}^{exponent} = {result}”)
+
+	Output:Enter the base (X): 2
+		Enter the exponent (Y): -3
+		2.0^-3 = 0.125
+
+
+Q. Write a python program to generate the following type of pattern for the given N
+rows where N <= 26.
+A
+A B
+A B C D
+A B C D E
+Def generate_pattern(n):
+    If n > 26:
+        Print(“N must be less than or equal to 26.”)
+        Return
+    For I in range(1, n + 1):
+        Row = “ “.join(chr(65 + j) for j in range(i))
+        Print(row)
+N = int(input(“Enter the number of rows (N <= 26): “))
+Generate_pattern(n)
+
+Q.Write a python program to generate prime numbers within a certain range
+Def is_prime(num):
+    If num <= 1:
+        Return False
+    For I in range(2, int(num**0.5) + 1):
+        If num % I == 0:
+            Return False
+    Return True
+Def generate_primes(start, end):
+    Primes = []
+    For num in range(start, end + 1):
+        If is_prime(num):
+            Primes.append(num)
+    Return pprime
+Start = int(input(“Enter the starting value of the range: “))
+End = int(input(“Enter the ending value of the range: “))
+Prime_numbers = generate_primes(start, end)
+Print(f”Prime numbers between {start} and {end}: {prime_numbers}”)
+
+	Output: Enter the starting value of the range: 10
+		Enter the ending value of the range: 30
+		Prime numbers between 10 and 30: [11, 13, 17, 19, 23, 29]
+
+	
+	June 2022
+Q. What is the output of the following print statement in python?
+(a)print(9//2) (b)print(9/2)
+Ans:
+(a) print(9//2)
+
+The // operator in Python performs integer (floor) division. It divides the number and truncates the decimal part, returning an integer result.
+
+9 // 2 = 4
+Output: 4
+
+
+(b) print(9/2)
+
+The / operator in Python performs floating-point division. It divides the numbers and returns the result as a float.
+
+9 / 2 = 4.5
+Output: 4.5
+
+Q. Write a python program to count numbers of even numbera to odd numbers in a given set of n numbers
+n = int(input("Enter the number of elements"))
+even_count = 0
+odd_count = 0
+print("Enter the numbers:")
+for _ in range(n):
+    num = int(input())
+    if num % 2 == 0:
+        even_count += 1
+    else:
+        odd_count += 1
+print("Number of even numbers:", even_count)
+print("Number of odd numbers:", odd_count)
+
+	Output: Enter the number of elements: 5
+		Enter the numbers:
+		10
+		21
+		32
+		43
+		54
+		Number of even numbers: 3
+		Number of odd numbers: 2
+
+
+Q. Write a python program to generate the following type of pattern for the given N rows
+1
+1 2
+1 2 3
+1 2 3 4
+Ans
+N = int(input("Enter the number of rows: "))
+
+for i in range(1, N + 1):
+    for j in range(1, i + 1):
+        print(j, end=" ")
+    print()
+
+Q. Mention the different types of loops and control statements in Python and explain each type with suitable example
+1. Loops in Python
+
+a. For Loop
+Purpose:iterates over a sequence or range of numbers
+
+Syntax:
+
+for variable in sequence:
+    # code block
+
+Example:
+
+for i in range(5):
+    print(i)
+
+Output:
+
+0
+1
+2
+3
+4
+
+
+b. While Loop
+
+Purpose: Repeats as long as a condition is True.
+
+Syntax:
+
+while condition:
+    # code block
+
+Example:
+
+count = 0
+while count < 5:
+    print(count)
+    count += 1
+
+Output:
+
+0
+1
+2
+3
+4
+
+
+
+2. Control Statements in Python
+
+a. Break
+
+Purpose: Terminates the loop prematurely.
+
+Example:
+
+for i in range(5):
+    if i == 3:
+        break
+    print(i)
+
+Output:
+
+0
+1
+2
+
+
+b. Continue
+
+Purpose: Skips the current iteration and moves to the next.
+
+Example:
+
+for i in range(5):
+    if i == 3:
+        continue
+    print(i)
+
+Output:
+
+0
+1
+2
+4
+
+
+c. Pass
+
+Purpose: Acts as a placeholder, does nothing when executed.
+
+Example:
+
+for i in range(5):
+    if i == 3:
+        pass # Placeholder for future code
+    print(i)
+
+Output:
+
+0
+1
+2
+3
+4
+
+
+d. Else with Loops
+
+Purpose: Executes a block of code if the loop completes without being interrupted by break.
+
+Example:
+
+for i in range(5):
+    if i == 6:
+        break
+else:
+    print("Loop completed without break")
+
+Q. Write the Python program to print all the prime numbers less than 1000.
+Ans:
+
+for num in range(2, 1000):
+    for i in range(2, num):
+        if num % i == 0:
+            break
+    else:
+        print(num, end=" ")
+
+Q. Write a Python program to find the distance between two points (x1, y1 )and (x2, y2.)
+Ans:
+X1= float(input("Enter x1: "))
+y1 = float(input("Enter y1: "))
+x2 = float(input("Enter x2: "))
+y2 = float(input("Enter y2: "))
+
+distance = ((x2 - x1) ** 2 + (y2 - y1) ** 2) ** 0.5
+
+print("The distance between the two points is:", distance)
+
+	Output: Enter x1: 1
+		Enter y1: 2
+		Enter x2: 4
+		Enter y2: 6
+		The distance between the two points is: 5.00
+
+
+	Jun 2022
+Q. What is the output of the following Python code. Justify your answer.
+x = 'abcd'
+for i in range(len(x)):
+ print(i)
+
+Output:
+0
+1
+2
+3
+
+Q. Write the syntax and semantics of the multiway-if statement.
+
+if condition1:
+    # Block executed if condition1 is True
+elif condition2:
+    # Block executed if condition1 is False and condition2 is True
+elif condition3:
+    # Block executed if all previous conditions are False and condition3 is True
+else:
+    # Block executed if all conditions are False
+
+
+Q.Write a Python program to find the roots of a quadratic equation, ax 2 + bx + c = 0 . Consider the cases of both real and imaginary roots.
+
+a = float(input("Enter coefficient a: "))
+b = float(input("Enter coefficient b: "))
+c = float(input("Enter coefficient c: "))
+
+if a == 0:
+    print("This is not a quadratic equation.")
+else:
+    discriminant = b**2 - 4*a*c
+
+    if discriminant > 0:
+        root1 = (-b + discriminant**0.5) / (2 * a)
+        root2 = (-b - discriminant**0.5) / (2 * a)
+        print("Roots are real and distinct:")
+        print("Root 1 =", root1)
+        print("Root 2 =", root2)
+
+    elif discriminant == 0:
+        root = -b / (2 * a)
+        print("Roots are real and equal:")
+        print("Root =", root)
+
+    else:
+        real_part = -b / (2 * a)
+        imaginary_part = (-discriminant)**0.5 / (2 * a)
+        print("Roots are imaginary:")
+        print(f"Root 1 = {real_part} + {imaginary_part}i")
+        print(f"Root 2 = {real_part} - {imaginary_part}i")
+
+	Output: Enter coefficient a: 1
+		Enter coefficient b: -3
+		Enter coefficient c: 2
+		Roots are real and distinct:
+		Root 1 = 2.00
+		Root 2 = 1.00
+
+Q. Write a Python program to check whether a number is Armstrong number or not.
+An Armstrong number is an n-digit number that is equal to the sum of the n th
+powers of its digits.
+Examples: 153 = 1^3 + 5^3 + 3^3 , 1634= 1 ^4 + 6^4 + 3^4 + 4^4
+
+num = int(input("Enter a number: "))
+
+num_str = str(num)
+num_digits = len(num_str)
+
+sum_of_powers = 0
+
+for digit in num_str:
+    sum_of_powers += int(digit) ** num_digits
+
+if sum_of_powers == num:
+    print(f"{num} is an Armstrong number.")
+else:
+    print(f"{num} is not an Armstrong number.")
+
+	Output: Enter a number: 153
+		153 is an Armstrong number.
+
+
+Q. Write a Python program to display the sum of odd numbers between a
+programmer specified upper and lower limit.
+
+lower_limit = int(input("Enter the lower limit: "))
+upper_limit = int(input("Enter the upper limit: "))
+
+odd_sum = 0
+
+for num in range(lower_limit, upper_limit + 1):
+    if num % 2 != 0: 
+        odd_sum += num
+
+print(f"The sum of odd numbers between {lower_limit} and {upper_limit} is: {odd_sum}")
+
+	Output: Enter the lower limit: 1
+		Enter the upper limit: 10
+		The sum of odd numbers between 1 and 10 is: 25
+
+Q. e ^x=1+x+ x^2/2!+ x^3/3! +x^4/4!+…
+Given the value of x, write a Python program to evaluate the following series upto
+n terms:
+
+x = float(input("Enter the value of x: "))
+n = int(input("Enter the number of terms (n): "))
+
+
+result = 1  
+term = 1   
+
+for i in range(1, n):
+    term = term * (x / i)  
+    result += term       
+
+print(f"The value of e^{x} up to {n} terms is: {result}")
+
+	Output: Enter the value of x: 2
+		Enter the number of terms (n): 10
+		The value of e^2 up to 10 terms is: 7.388994
+
